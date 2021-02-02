@@ -12,9 +12,9 @@ def remove_third_char(string: str) -> str:  # str[0:2]+[3:]
 
 
 def replace_char(string: str, old_char: str, new_char: str) -> str:
-    position_of_old_char = string.index(old_char)  # donne position/l'index qui est un int
-    return string[:position_of_old_char] + new_char + string[position_of_old_char + 1:]
-
+    position_of_old_char = string.index(old_char)  # donne position/l'index qui est un int, alternative for loop and if statement pcq comme c'est pas capable d'identifier pls old_char
+    string = string[:position_of_old_char] + new_char + string[position_of_old_char + 1:]
+    return string
 
 def get_number_of_char(string: str, char: str) -> int:
     number_of_char = 0
@@ -51,8 +51,7 @@ def main() -> None:
     chaine = "hello world!"
     print(f"On remplace le caractère w par le caractère z dans la chaine: {chaine}. Résultat : {replace_char(chaine, 'w', 'z')}")
 
-    chaine = "hello"
-    print(f"Le nombre d'occurrence de l dans hello est : {get_number_of_char(chaine, 'l')}")  # hello ou hello zworld
+    print(f"Le nombre d'occurrence de l dans 'hello world' est : {get_number_of_char(chaine, 'l')}")  # hello ou hello zworld
 
     chaine = "Baby shark doo doo doo doo doo doo"
     print(f"L'occurence du mot doo dans la chaine {chaine} est: {get_number_of_words(chaine, 'doo')}")
