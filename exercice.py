@@ -1,26 +1,38 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+def is_even_len(string: str) -> bool: #nb caracteres est pair ? cad si len Divisble par 2 sans reste (modulo) => pair
+    if len(string)% 2 == 0:
+        return True
+    return False
 
-def is_even_len(string: str) -> bool:
-    pass
 
-
-def remove_third_char(string: str) -> str:
-    pass
-
+def remove_third_char(string: str) -> str: # str[0:2]+[3:]
+    return string[0:2] + string[3:]
 
 def replace_char(string: str, old_char: str, new_char: str) -> str:
-    pass
-
+    position_of_old_char = string.index(old_char) #donne position/l'index qui est un int
+    return string[:position_of_old_char] + new_char + string[position_of_old_char + 1:]
 
 def get_number_of_char(string: str, char: str) -> int:
-    pass
+    number_of_char = 0
+    for i in string:
+        if i == char:
+            number_of_char += 1
+    return number_of_char
 
+    #Solution that didn't work
+    #positions_of_char = (string.index(char))
+    #number_of_char = len(f'{positions_of_char}')
+    #return number_of_char
 
 def get_number_of_words(sentence: str, word: str) -> int:
-    pass
-
+    number_of_word = 0
+    sentence = sentence.split()
+    for i in sentence: #pourquoi ecq for word in sentence: ne fonctionne pas
+        if i == word:
+            number_of_word += 1
+    return number_of_word
 
 def main() -> None:
     chaine = "Bonjour!"
@@ -35,7 +47,8 @@ def main() -> None:
     chaine = "hello world!"
     print(f"On remplace le caratère w par le caractère z dans la chaine: {chaine}. Résultat : {replace_char(chaine, 'w', 'z')}")
 
-    print(f"Le nombre d'occurrence de l dans hello est : {get_number_of_char(chaine, 'l')}")
+    chaine = "hello"
+    print(f"Le nombre d'occurrence de l dans hello est : {get_number_of_char(chaine, 'l')}") #hello ou hello zworld
     
     chaine = "Baby shark doo doo doo doo doo doo"
     print(f"L'occurence du mot doo dans la chaine {chaine} est: {get_number_of_words(chaine, 'doo')}")
